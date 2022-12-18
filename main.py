@@ -32,9 +32,19 @@ def present_phrase():
     engine.say(phrase)
     engine.runAndWait()
 
+
+
 # Create a function to listen for the user's response
 def listen_for_response():
     with sr.Microphone() as source:
         audio = r.listen(source)
     try:
-        response = r.
+        response = r.recognize_google(audio)  # Recognize the audio as speech and convert it to text
+        return response
+    except sr.UnknownValueError:
+        print("Sorry, I didn't understand that.")
+        return None
+    except sr.RequestError as e:
+        print("Error processing request: {0}".format(e))
+        return None
+
