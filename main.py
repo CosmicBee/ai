@@ -73,3 +73,25 @@ while True:
     else:
         print("No response detected, please try again.")
 
+
+
+
+
+
+
+#this is how you exit the ai
+
+# Main loop
+while True:
+    present_phrase()
+    response = listen_for_response()
+    if response is not None:
+        print(f"You said: {response}")
+        translate_response(response, "french")
+        if response.lower() == "exit":  # Check if the user wants to exit
+            break  # Exit the loop
+    else:
+        print("No response detected, please try again.")
+
+print("Exiting program.")
+
